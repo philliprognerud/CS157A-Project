@@ -7,10 +7,11 @@ C9_PORT = int(os.getenv('PORT', 8080))
 
 mysql = MySQL()
 app = Flask(__name__)
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
-app.config['MYSQL_DATABASE_DB'] = 'EmpData'
-app.config['MYSQL_DATABASE_HOST'] = C9_HOST
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQLE_PASSWORD'] = 'root'
+app.config['MYSQL_DB'] = 'EmpData'
+app.config['MYSQL_HOST'] = str(C9_HOST)
+app.config['MYSQL_PORT'] = 3306
 mysql.init_app(app)
 
 
