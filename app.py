@@ -1,3 +1,11 @@
+##############################################################
+# USE THESE LINKS AS REFERENCE FOR MYSQL
+##############################################################
+# http://flask-mysqldb.readthedocs.io/en/latest/
+# http://codehandbook.org/python-web-application-flask-mysql/
+# https://community.c9.io/t/setting-up-mysql/1718
+##############################################################
+
 import os
 from flask import Flask, request
 from flask_mysqldb import MySQL
@@ -27,8 +35,12 @@ def Authenticate():
   cursor = mysql.connection.cursor()
   cursor.execute("SELECT * from User where Username='" + username +
                  "' and Password='" + password + "'")
-  rv = cursor.fetchall()
-  return str(username)
+  data = cursor.fetchone()
+
+  if data is None:
+    return "Username or Password is wrong"
+  else:
+    return "Logged in successfully"
 
 
 app.run(C9_HOST, C9_PORT)
