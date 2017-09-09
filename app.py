@@ -1,10 +1,19 @@
 ##############################################################
-# USE THESE LINKS AS REFERENCE FOR MYSQL
+# USE THESE LINKS AS REFERENCE FOR MYSQL with Flask/C9
 ##############################################################
 # http://flask-mysqldb.readthedocs.io/en/latest/
 # http://codehandbook.org/python-web-application-flask-mysql/
 # https://community.c9.io/t/setting-up-mysql/1718
 ##############################################################
+
+####################################
+# MYSQL COMMANDS
+####################################
+# mysql-ctl cli (start MySQL shell)
+# CREATE DATABASE DB_NAME
+# use DB_NAME
+# show tables;
+####################################
 
 import os
 from flask import Flask, request
@@ -28,6 +37,9 @@ def hello():
   return "Welcome to Python Flask App!"
 
 
+# To test this enter username and password that are already added to db
+# http://127.0.0.1:5000/Authenticate?UserName=Admin&Password=admin
+# type in something else and it will output error accordingly
 @app.route("/Authenticate")
 def Authenticate():
   username = request.args.get('UserName')
